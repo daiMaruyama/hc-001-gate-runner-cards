@@ -110,11 +110,11 @@ Assets/
 
 ## 📝 ライセンス
 
-個人プロジェクト（ポートフォリオ用）
+個人プロジェクト
 
 ## 👤 作成者
 
-**Maruyama Dai**
+**Maruyama Daisuke**
 - GitHub: [@daiMaruyama](https://github.com/daiMaruyama)
 - Portfolio: [https://daimaruyama.github.io/](https://daimaruyama.github.io/)
 
