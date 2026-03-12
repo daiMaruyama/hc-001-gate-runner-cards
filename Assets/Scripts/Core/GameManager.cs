@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace HighwayUrge.Core
@@ -71,5 +72,63 @@ namespace HighwayUrge.Core
         Playing,
         Clear,
         GameOver
+    }
+}
+
+public class ScoreManager : MonoBehaviour
+{
+    [SerializeField] int _score = 0;
+    public event Action<int> OnScoreChanged;
+
+    public void AddScore(int amount)
+    {
+        _score += amount;
+        OnScoreChanged?.Invoke(_score);
+    }
+}
+
+public class  DisplayUI : MonoBehaviour
+{
+    [SerializeField] ScoreManager SM;
+
+    void OnEnable()
+    {
+        SM.OnScoreChanged += UpdateScoreDisplay;
+    }
+
+    void OnDisable()
+    {
+        SM.OnScoreChanged -= UpdateScoreDisplay;
+    }
+
+    void UpdateScoreDisplay(int newScore)
+    {
+        // スコア表示を更新する処理
+        Debug.Log($"Score Updated: {newScore}");
+    }
+}
+
+public class ScoreUpdate : MonoBehaviour
+{
+    int _highScore = 0;
+    [SerializeField] ScoreManager SM;
+
+    private void OnEnable()
+    {
+        SM.OnScoreChanged += CheckHighScore;
+    }
+
+    void OnDisable()
+    {
+        SM.OnScoreChanged -= CheckHighScore;
+    }
+
+    void CheckHighScore(int newScore)
+    {
+        if (newScore > _highScore)
+        {
+            _highScore = newScore;
+            Debug.Log($"New High Score: {_highScore}");
+        }
     }
 }
