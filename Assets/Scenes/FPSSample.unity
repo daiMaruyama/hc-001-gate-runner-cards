@@ -856,7 +856,7 @@ MonoBehaviour:
     m_Bits: 64
   _currentState: 1
   _maxMissCount: 5
-  _maxSuccessCount: 10
+  _maxSuccessCount: 3
   _statusText: {fileID: 1941052561}
 --- !u!1 &1941052559
 GameObject:
