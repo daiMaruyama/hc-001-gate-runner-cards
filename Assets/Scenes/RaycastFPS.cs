@@ -47,6 +47,7 @@ public class RaycastFPS : MonoBehaviour
             _statusText.text = "Hits: " + _successCount + " / Misses: " + _missCount;
             Debug.Log("Success Count: " + _successCount);
             hit.collider.gameObject.SetActive(false);
+            if (_successCount == _maxSuccessCount) return; // クリア条件を満たしたらこれ以上スポーンしない
             StartCoroutine(Respawn(hit.collider.gameObject, 1f));
         }
         else
